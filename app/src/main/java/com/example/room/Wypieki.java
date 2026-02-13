@@ -12,7 +12,7 @@ public class Wypieki {
     private String skladniki;
     @ColumnInfo(name = "temperatura_pieczenia")
     private int temepraturaPieczywa;
-    @ColumnInfo(name = "czas_pieczenia,")
+    @ColumnInfo(name = "czas_pieczenia")
     private int czasPieczenia;
 
     public Wypieki(String nazwa, String skladniki, int temepraturaPieczywa, int czasPieczenia) {
