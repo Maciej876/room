@@ -22,7 +22,7 @@ public interface WypiekiDao {
 
     @Query("Select * from wypieki_tabela")
     List<Wypieki> zwrocWszystkieWypiekiZBazy();
-}
 
-@Query("Select nazwa from wypieki_tabela where czas_pieczenia< :czas")
-List<String> zwrocNazwyWpiekow(int czas);
+    @Query("Select nazwa from wypieki_tabela where czas_pieczenia< :czas")
+    List<String> zwrocNazwyWypiekow(int czas);
+}
