@@ -5,26 +5,18 @@ import android.content.Context;
 import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
-
-@Database(entities = {Wypieki.class}, version = 1)
-public abstract class PrzepisyDataBase extends RoomDatabase {
-
-        public abstract WypiekiDao zwrocWypiekiDao();
-
-        private static PrzepisyDataBase instancje;
-
-        public static PrzepisyDataBase zwrocInstancjeBazyDanych(Context context){
-            if (instancje == null) {
-                instancje = Room.databaseBuilder(
-                                context,
-                                PrzepisyDataBase.class,
-                                    "przepisy_db"
-                            )
-                        .allowMainThreadQueries()
-                        .fallbackToDestructiveMigration()
-                        .build();
-            }
-            return instancje;
-
+@Database(entities = {Wypiek.class}, version = 1)
+public abstract class PrzepisyDatabase extends RoomDatabase {
+    public abstract WypiekiDAO zwrocWypiekiDao();
+    private static PrzepisyDatabase instancja;
+    public static PrzepisyDatabase zwrocInstancjeBazyDanych(Context context){
+        if(instancja == null){
+            instancja = Room.databaseBuilder(context, PrzepisyDatabase.class, "przepisyDB")
+                    .allowMainThreadQueries()
+                    .build();
+        }
+        // nie powinniśmy tego robić w wątku głównym
+        return instancja;
     }
+    // Wejdź w App Inspection
 }
