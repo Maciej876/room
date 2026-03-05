@@ -4,34 +4,24 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+// Dodajemy informację, że klasa jest encją (tabelą) bazy danych i podajemy jej nazwę
 @Entity (tableName = "wypieki_tabela")
-public class Wypieki {
-    @PrimaryKey(autoGenerate = true)
-    private int id;
-    private String nazwa;
-    private String skladniki;
-    @ColumnInfo(name = "temperatura_pieczenia")
-    private int temepraturaPieczywa;
-    @ColumnInfo(name = "czas_pieczenia")
+public class Wypiek {
+    @PrimaryKey (autoGenerate = true) // samo sie bedzie generowac
+    private int id = 0;
+    @ColumnInfo (name = "temperatura pieczenia") // nazwa kolumny
+    private int temperaturaPieczenia;
+    @ColumnInfo (name = "czas pieczenia")
     private int czasPieczenia;
+    private String nazwaWypieku;
+    private String skladniki;
 
-    public Wypieki(String nazwa, String skladniki, int temepraturaPieczywa, int czasPieczenia) {
-        id = 0;
-        this.nazwa = nazwa;
-        this.skladniki = skladniki;
-        this.temepraturaPieczywa = temepraturaPieczywa;
+    public Wypiek(int temperaturaPieczenia, int czasPieczenia, String nazwaWypieku, String skladniki) {
+        id = 0; // musi być
+        this.temperaturaPieczenia = temperaturaPieczenia;
         this.czasPieczenia = czasPieczenia;
-    }
-
-    @Override
-    public String toString() {
-        return "Wypieki{" +
-                "id=" + id +
-                ", nazwa='" + nazwa + ",\n" +
-                ", skladniki='" + skladniki + ",\n" +
-                ", temepraturaPieczywa=" + temepraturaPieczywa +
-                ", \n czasPieczenia=" + czasPieczenia +
-                '}';
+        this.nazwaWypieku = nazwaWypieku;
+        this.skladniki = skladniki;
     }
 
     public int getId() {
@@ -42,12 +32,28 @@ public class Wypieki {
         this.id = id;
     }
 
-    public String getNazwa() {
-        return nazwa;
+    public int getTemperaturaPieczenia() {
+        return temperaturaPieczenia;
     }
 
-    public void setNazwa(String nazwa) {
-        this.nazwa = nazwa;
+    public void setTemperaturaPieczenia(int temperaturaPieczenia) {
+        this.temperaturaPieczenia = temperaturaPieczenia;
+    }
+
+    public int getCzasPieczenia() {
+        return czasPieczenia;
+    }
+
+    public void setCzasPieczenia(int czasPieczenia) {
+        this.czasPieczenia = czasPieczenia;
+    }
+
+    public String getNazwaWypieku() {
+        return nazwaWypieku;
+    }
+
+    public void setNazwaWypieku(String nazwaWypieku) {
+        this.nazwaWypieku = nazwaWypieku;
     }
 
     public String getSkladniki() {
@@ -58,19 +64,14 @@ public class Wypieki {
         this.skladniki = skladniki;
     }
 
-    public int getTemepraturaPieczywa() {
-        return temepraturaPieczywa;
-    }
-
-    public void setTemepraturaPieczywa(int temepraturaPieczywa) {
-        this.temepraturaPieczywa = temepraturaPieczywa;
-    }
-
-    public int getCzasPieczenia() {
-        return czasPieczenia;
-    }
-
-    public void setCzasPieczenia(int czasPieczenia) {
-        this.czasPieczenia = czasPieczenia;
+    @Override
+    public String toString() {
+        return "Wypiek{" +
+                "id=" + id +
+                ", temperaturaPieczenia=" + temperaturaPieczenia +
+                ", czasPieczenia=" + czasPieczenia +
+                ", nazwaWypieku='" + nazwaWypieku + '\'' +
+                ", skladniki='" + skladniki + '\'' +
+                '}';
     }
 }
